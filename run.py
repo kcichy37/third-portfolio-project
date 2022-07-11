@@ -1,5 +1,6 @@
 import pyfiglet
 import pyinputplus as pyip
+from board import minesweeper
 
 
 result = pyfiglet.figlet_format("Welcome To Minesweeper", font="slant")
@@ -68,16 +69,6 @@ def game_rules():
         A common strategy for starting
         games is to randomly mark a spot
         until you get a big opening with lots of numbers.\n""")
-
-
-def minesweeper(board_size):
-    """
-    Creates the board and all of the
-    boards functions
-    """
-    board = [[[0] for row in range(board_size)] for column in range(board_size)]
-    for row in board:
-        print(" ".join(str(cell) for cell in row))
 
 
 main_menu()
