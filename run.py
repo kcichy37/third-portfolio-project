@@ -16,7 +16,7 @@ def main_menu():
     1) Rules
     2) Difficulty\n""")
 
-    choice = pyip.inputInt("""Please enter 1 for Rules or 2 for Difficulty selection:\n""", min=1, max=2)
+    choice = pyip.inputInt("Please enter 1 for Rules or 2 for Difficulty selection:\n", min=1, max=2)
 
     if choice == 1:
         game_rules()
@@ -26,8 +26,22 @@ def main_menu():
 
             if back_to_main == "BACK":
                 main_menu()
+                break
             else:
                 print("\nWrong input.")
+    elif choice == 2:
+        print("\n1) Easy, 5x5 grid with 5 mines")
+        print("2) Medium, 10x10 grid with 15 mines")
+        print("3) Hard, 15x15 grid with 35 mines\n")
+
+        difficulty = pyip.inputInt("Please enter 1 for Easy, 2 for Medium and 3 for Hard:\n", min=1, max=3)
+
+        if difficulty == 1:
+            minesweeper(5)
+        elif difficulty == 2:
+            minesweeper(10)
+        else:
+            minesweeper(15)
 
 
 def game_rules():
@@ -56,15 +70,14 @@ def game_rules():
         until you get a big opening with lots of numbers.\n""")
 
 
-main_menu()
-
-
-class Board:
+def minesweeper(board_size):
     """
     Creates the board and all of the
     boards functions
     """
-    # __init__ for the boards sizes
-    # create board depending on difficulty
-    # keep track of location revealed
-    # plant the bombs randomly
+    board = [[[0] for row in range(board_size)] for column in range(board_size)]
+    for row in board:
+        print(" ".join(str(cell) for cell in row))
+
+
+main_menu()
