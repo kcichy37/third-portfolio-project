@@ -20,18 +20,21 @@ def main_menu():
 
     if choice == 1:
         game_rules()
-        back_to_main = str(input("Enter 'BACK' for main menu:\n")).upper()
 
-        if back_to_main == "BACK":
-            main_menu()
-        else:
-            print("Wrong input, Please enter 'BACK'")
+        while True:
             back_to_main = str(input("Enter 'BACK' for main menu:\n")).upper()
-            main_menu()
 
+            if back_to_main == "BACK":
+                main_menu()
+            else:
+                print("\nWrong input.")
 
 
 def game_rules():
+
+    """
+    Explains the game rules to the user
+    """
 
     print("""\n Rules
         Minesweeper is a game where
