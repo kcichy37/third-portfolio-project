@@ -1,4 +1,5 @@
 import pyfiglet
+import pyinputplus as pyip
 
 
 result = pyfiglet.figlet_format("Welcome To Minesweeper", font="slant")
@@ -15,7 +16,7 @@ def main_menu():
     1) Rules
     2) Difficulty\n""")
 
-    choice = int(input("""Please enter 1 for Rules or 2 for Difficulty selection:\n"""))
+    choice = pyip.inputInt("""Please enter 1 for Rules or 2 for Difficulty selection:\n""", min=1, max=2)
 
     if choice == 1:
         game_rules()
@@ -23,8 +24,10 @@ def main_menu():
 
         if back_to_main == "BACK":
             main_menu()
-
-
+        else:
+            print("Wrong input, Please enter 'BACK'")
+            back_to_main = str(input("Enter 'BACK' for main menu:\n")).upper()
+            main_menu()
 
 
 
