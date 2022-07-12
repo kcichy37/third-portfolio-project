@@ -38,11 +38,11 @@ def main_menu():
         difficulty = pyip.inputInt("Please enter 1 for Easy, 2 for Medium and 3 for Hard:\n", min=1, max=3)
 
         if difficulty == 1:
-            minesweeper(5)
+            minesweeper(5, 3)
         elif difficulty == 2:
-            minesweeper(10)
+            minesweeper(10, 10)
         else:
-            minesweeper(15)
+            minesweeper(15, 35)
 
 
 def game_rules():
