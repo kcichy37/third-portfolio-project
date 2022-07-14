@@ -54,25 +54,20 @@ def minesweeper(board_size, mines):
         if (r >= 0 and r <= board_size-1) and (c >= 0 and c <= board_size-2):
             if board[c+1][r] != "X":
                 board[c+1][r] += 1
-
-    max_row_len = len(max(board, key=len))
-    print('    ', end='')
-    print(*range(max_row_len), sep=' | ')
-    print('', "----"*max_row_len)
-
-    for idx, val in enumerate(board):
-        print('%2s' % idx, end='| ')
-        print(*val, sep=' | ')
+    return board
 
 
 def player(board_size,):
     board = [["-" for row in range(board_size)] for col in range(board_size)]
-    
-    max_row_len = len(max(board, key=len))
+    return board
+
+
+def display_board(map):
+    max_row_len = len(max(map, key=len))
     print('    ', end='')
     print(*range(max_row_len), sep=' | ')
     print('', "----"*max_row_len)
 
-    for idx, val in enumerate(board):
+    for idx, val in enumerate(map):
         print('%2s' % idx, end='| ')
         print(*val, sep=' | ')

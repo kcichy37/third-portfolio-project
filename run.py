@@ -65,6 +65,14 @@ def game_rules():
     print(typewriter(rules))
 
 
+def check_board(map):
+    for row in map:
+        for cell in map:
+            if cell == '-':
+                return False
+    return True
+
+
 def game():
     game_status = True
     while game_status:
@@ -89,11 +97,20 @@ def game():
             main_menu()
         break
 
+
+    minesweeper_map = minesweeper(board_size, mines)
+    player_map = player(board_size)
+
     player(board_size)
+
+
 
     print("Please enter your selection:")
     r = input("Row:")
     c = input("Column:")
+
+    if minesweeper_map[x][c] == 'X':
+        print("game")
 
 
 main_menu()
