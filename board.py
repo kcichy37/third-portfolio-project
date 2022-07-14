@@ -57,7 +57,7 @@ def minesweeper(board_size, mines):
     return board
 
 
-def player(board_size,):
+def player(board_size):
     board = [["-" for row in range(board_size)] for col in range(board_size)]
     return board
 

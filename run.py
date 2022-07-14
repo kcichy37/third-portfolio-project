@@ -2,9 +2,7 @@ import sys
 import time
 import pyfiglet
 import pyinputplus as pyip
-from board import minesweeper
-from board import player
-
+from board import minesweeper, player, display_board
 
 result = pyfiglet.figlet_format("Welcome To Minesweeper", font="slant")
 print(result)
@@ -76,6 +74,7 @@ def check_board(map):
 def game():
     game_status = True
     while game_status:
+
         print("\n1) Easy, 5x5 grid with 5 mines")
         print("2) Medium, 10x10 grid with 15 mines")
         print("3) Hard, 15x15 grid with 35 mines")
@@ -97,20 +96,33 @@ def game():
             main_menu()
         break
 
-
     minesweeper_map = minesweeper(board_size, mines)
     player_map = player(board_size)
 
-    player(board_size)
+    display_board(player_map)
 
+    while True:
 
+        if check_board(player_map) is False:
 
-    print("Please enter your selection:")
-    r = input("Row:")
-    c = input("Column:")
+            print("\nSelect position:")
+            r = input("Row:")
+            c = input("Column:")
+            r = int(r)
+            c = int(c)
 
-    if minesweeper_map[x][c] == 'X':
-        print("game")
+            if minesweeper_map[r][c] == "X":
+                display_board(minesweeper_map)
+                print('game over')
+                break
+            else:
+                player_map[r][c] = minesweeper_map[r][c]
+                display_board(player_map)
+        else:
+            display_board(player_map)
+            print("won")
+            game_status = False
+            break
 
 
 main_menu()
