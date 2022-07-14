@@ -6,45 +6,68 @@ def minesweeper(board_size, mines):
     Creates the board and all of the
     boards functions
     """
+    # Creates the board
     board = [[0 for row in range(board_size)] for col in range(board_size)]
 
+    # Places mines randomly
     for num in range(mines):
-        row = random.randint(0, board_size-1)
-        col = random.randint(0, board_size-1)
-        board[col][row] = "X"
+        r = random.randint(0, board_size-1)
+        c = random.randint(0, board_size-1)
+        board[c][r] = "X"
 
-        if (row >= 0 and row <= board_size-2) and (col >= 0 and col <= board_size-1):
-            if board[col][row+1] != "X":
-                board[col][row+1] += 1
+        # Checks neighbouring number = center right
+        if (r >= 0 and r <= board_size-2) and (c >= 0 and c <= board_size-1):
+            if board[c][r+1] != "X":
+                board[c][r+1] += 1
 
-        if (row >= 1 and row <= board_size-1) and (col >= 1 and col <= board_size-1):
-            if board[col][row-1] != "X":
-                board[col][row-1] += 1
+        # Checks neighbouring number = center left
+        if (r >= 1 and r <= board_size-1) and (c >= 0 and c <= board_size-1):
+            if board[c][r-1] != "X":
+                board[c][r-1] += 1
 
-        if (row >= 1 and row <= board_size-1) and (col >= 1 and col <= board_size-1):
-            if board[col-1][row-1] != "X":
-                board[col-1][row-1] += 1
+        # Checks neighbouring number = top left
+        if (r >= 1 and r <= board_size-1) and (c >= 1 and c <= board_size-1):
+            if board[c-1][r-1] != "X":
+                board[c-1][r-1] += 1
 
-        if (row >= 0 and row <= board_size-2) and (col >= 1 and col <= board_size-1):
-            if board[col-1][row+1] != "X":
-                board[col-1][row+1] += 1
+        # Checks neighbouring number = top right
+        if (r >= 0 and r <= board_size-2) and (c >= 1 and c <= board_size-1):
+            if board[c-1][r+1] != "X":
+                board[c-1][r+1] += 1
 
-        if (row >= 0 and row <= board_size-1) and (col >= 1 and col <= board_size-1):
-            if board[col-1][row] != "X":
-                board[col-1][row] += 1
+        # Checks neighbouring number = top center
+        if (r >= 0 and r <= board_size-1) and (c >= 1 and c <= board_size-1):
+            if board[c-1][r] != "X":
+                board[c-1][r] += 1
 
-        if (row >= 0 and row <= board_size-2) and (col >= 1 and col <= board_size-2):
-            if board[col+1][row+1] != "X":
-                board[col+1][row+1] += 1
+        # Checks neighbouring number = bottom right
+        if (r >= 0 and r <= board_size-2) and (c >= 0 and c <= board_size-2):
+            if board[c+1][r+1] != "X":
+                board[c+1][r+1] += 1
 
-        if (row >= 1 and row <= board_size-1) and (col >= 0 and col <= board_size-2):
-            if board[col+1][row-1] != "X":
-                board[col+1][row-1] += 1
+        # Checks neighbouring number = bottom left
+        if (r >= 1 and r <= board_size-1) and (c >= 0 and c <= board_size-2):
+            if board[c+1][r-1] != "X":
+                board[c+1][r-1] += 1
 
-        if (row >= 0 and row <= board_size-1) and (col >= 0 and col <= board_size-2):
-            if board[col+1][row] != "X":
-                board[col+1][row] += 1
+        # Checks neighbouring number = bottom left
+        if (r >= 0 and r <= board_size-1) and (c >= 0 and c <= board_size-2):
+            if board[c+1][r] != "X":
+                board[c+1][r] += 1
 
+    max_row_len = len(max(board, key=len))
+    print('    ', end='')
+    print(*range(max_row_len), sep=' | ')
+    print('', "----"*max_row_len)
+
+    for idx, val in enumerate(board):
+        print('%2s' % idx, end='| ')
+        print(*val, sep=' | ')
+
+
+def player(board_size,):
+    board = [["-" for row in range(board_size)] for col in range(board_size)]
+    
     max_row_len = len(max(board, key=len))
     print('    ', end='')
     print(*range(max_row_len), sep=' | ')
