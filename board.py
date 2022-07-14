@@ -1,4 +1,5 @@
 import random
+from termcolor import colored
 
 
 def minesweeper(board_size, mines):
@@ -13,46 +14,46 @@ def minesweeper(board_size, mines):
     for num in range(mines):
         r = random.randint(0, board_size-1)
         c = random.randint(0, board_size-1)
-        board[c][r] = "X"
+        board[c][r] = colored("X", "red", attrs=['bold'])
 
         # Checks neighbouring number = center right
         if (r >= 0 and r <= board_size-2) and (c >= 0 and c <= board_size-1):
-            if board[c][r+1] != "X":
+            if board[c][r+1] != colored("X", "red", attrs=['bold']):
                 board[c][r+1] += 1
 
         # Checks neighbouring number = center left
         if (r >= 1 and r <= board_size-1) and (c >= 0 and c <= board_size-1):
-            if board[c][r-1] != "X":
+            if board[c][r-1] != colored("X", "red", attrs=['bold']):
                 board[c][r-1] += 1
 
         # Checks neighbouring number = top left
         if (r >= 1 and r <= board_size-1) and (c >= 1 and c <= board_size-1):
-            if board[c-1][r-1] != "X":
+            if board[c-1][r-1] != colored("X", "red", attrs=['bold']):
                 board[c-1][r-1] += 1
 
         # Checks neighbouring number = top right
         if (r >= 0 and r <= board_size-2) and (c >= 1 and c <= board_size-1):
-            if board[c-1][r+1] != "X":
+            if board[c-1][r+1] != colored("X", "red", attrs=['bold']):
                 board[c-1][r+1] += 1
 
         # Checks neighbouring number = top center
         if (r >= 0 and r <= board_size-1) and (c >= 1 and c <= board_size-1):
-            if board[c-1][r] != "X":
+            if board[c-1][r] != colored("X", "red", attrs=['bold']):
                 board[c-1][r] += 1
 
         # Checks neighbouring number = bottom right
         if (r >= 0 and r <= board_size-2) and (c >= 0 and c <= board_size-2):
-            if board[c+1][r+1] != "X":
+            if board[c+1][r+1] != colored("X", "red", attrs=['bold']):
                 board[c+1][r+1] += 1
 
         # Checks neighbouring number = bottom left
         if (r >= 1 and r <= board_size-1) and (c >= 0 and c <= board_size-2):
-            if board[c+1][r-1] != "X":
+            if board[c+1][r-1] != colored("X", "red", attrs=['bold']):
                 board[c+1][r-1] += 1
 
         # Checks neighbouring number = bottom left
         if (r >= 0 and r <= board_size-1) and (c >= 0 and c <= board_size-2):
-            if board[c+1][r] != "X":
+            if board[c+1][r] != colored("X", "red", attrs=['bold']):
                 board[c+1][r] += 1
     return board
 

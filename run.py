@@ -2,6 +2,7 @@ import sys
 import time
 import pyfiglet
 import pyinputplus as pyip
+from termcolor import colored
 from board import minesweeper, player, display_board
 
 result = pyfiglet.figlet_format("Welcome To Minesweeper", font="slant")
@@ -106,18 +107,18 @@ def game():
         if check_board(player_map) is False:
 
             print("\nSelect position:")
-            r = input("Row:")
-            c = input("Column:")
+            r = pyip.inputInt("Row:", min=0, max=board_size-1)
+            c = pyip.inputInt("Column:", min=0, max=board_size-1)
             r = int(r)
             c = int(c)
 
-            if minesweeper_map[r][c] == "X":
+            if minesweeper_map[r][c] == colored("X", "red", attrs=['bold']):
                 display_board(minesweeper_map)
                 print('game over')
                 break
             else:
                 player_map[r][c] = minesweeper_map[r][c]
-                display_board(player_map)
+                display_board(player_map) 
         else:
             display_board(player_map)
             print("won")
