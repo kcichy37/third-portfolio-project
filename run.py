@@ -65,7 +65,7 @@ def game_rules():
 
 def check_board(map):
     for row in map:
-        for cell in map:
+        for cell in row:
             if cell == '-':
                 return False
     return True
