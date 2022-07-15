@@ -1,13 +1,13 @@
 """Game"""
 import sys
 import time
-from pyfiglet import figlet_format
+from pyfiglet import Figlet
 import pyinputplus as pyip
 from termcolor import colored
 from board import minesweeper, player, display_board
 
 # Main menu logo
-print(figlet_format("Welcome To Minesweeper", font="slant"))
+figlet = Figlet(font="slant")
 
 
 def main_menu():
@@ -51,12 +51,7 @@ def game_rules():
     You can use the number clues to solve the game,
     by opening all of the safe squares.
     If you click on a mine you lose the game!
-
-    When you open a square that does not touch any mines,
-    it will be empty and the adjacent squares will automatically open
-    in all directions until reaching squares that contain numbers.
-    A common strategy for starting games is to randomly mark a spot
-    until you get a big opening with lots of number clues."""
+    """
 
     # Gives the rules a typing animation
     def typewriter(rules):
@@ -163,4 +158,6 @@ def game():
                 restart()
 
 
+print(figlet.renderText("WELCOME TO MINESWEEPER"))
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 main_menu()
