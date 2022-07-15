@@ -6,15 +6,15 @@ import pyinputplus as pyip
 from termcolor import colored
 from board import minesweeper, player, display_board
 
+# Main menu logo
+print(figlet_format("Welcome To Minesweeper", font="slant"))
+
 
 def main_menu():
     """
     Main menu for user to pick whether
     they want the rules or straight to difficulty options
     """
-
-    # Main menu logo
-    print(figlet_format("Welcome To Minesweeper", font="slant"))
 
     # Rules or Difficulty selection choice
     print("""Please choose one of the options:\n
