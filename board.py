@@ -1,3 +1,4 @@
+"""Board"""
 import random
 from termcolor import colored
 
@@ -59,11 +60,20 @@ def minesweeper(board_size, mines):
 
 
 def player(board_size):
+    """
+    This the board the user will see
+    with the mines and numbers hidden for "-"
+    """
     board = [["-" for row in range(board_size)] for col in range(board_size)]
     return board
 
 
 def display_board(map):
+    """
+    This function prints out selected
+    board to the command line terminal
+    with row and column numbers
+    """
     max_row_len = len(max(map, key=len))
     print('    ', end='')
     print(*range(max_row_len), sep=' | ')
