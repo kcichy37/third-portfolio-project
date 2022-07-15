@@ -94,6 +94,9 @@ def game():
     with users input.
     """
     game_status = True
+    used_coordinates = []
+    revealed_cells = 0
+
     while game_status:
 
         # Difficulty selection
@@ -128,8 +131,12 @@ def game():
         print("\nSelect position:")
         r = pyip.inputInt("Row:", min=0, max=board_size-1)
         c = pyip.inputInt("Column:", min=0, max=board_size-1)
-        r = int(r)
-        c = int(c)
+        used_coordinates.append([r, c])
+        coordinates = [r, c]
+
+        for coordinates in used_coordinates:
+            print('2')
+
 
         # If mine hit game lost
         if minesweeper_map[r][c] == colored("X", "red", attrs=['bold']):
@@ -141,6 +148,15 @@ def game():
         else:
             player_map[r][c] = minesweeper_map[r][c]
             display_board(player_map)
+            revealed_cells = revealed_cells + 1
+            print(coordinates)
+            print(used_coordinates)
+
+            # Once all empty cells are revealed user wins
+            if revealed_cells == board_size**2 - mines:
+                print("\nWell done you didn't hit a mine")
+                print("~~~~~~~YOU WON~~~~~~~\n")
+                restart()
 
 
 main_menu()
