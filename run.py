@@ -1,7 +1,7 @@
 """Game"""
 import sys
 import time
-import os
+from os import system
 from pyfiglet import Figlet
 import pyinputplus as pyip
 from termcolor import colored
@@ -79,9 +79,7 @@ or 2 to Quit: """, min=1, max=2)
         main_menu()
     else:
         quit()
-        
-        if quit():
-            os.system('CLS')
+        system('cls')
 
 
 def game():
