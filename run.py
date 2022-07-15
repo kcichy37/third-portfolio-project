@@ -29,12 +29,12 @@ def main_menu():
         # Rules
         game_rules()
         while True:
-            back_to_main = input("\nEnter 'BACK' for main menu:\n").upper()
-            if back_to_main == "BACK":
-                main_menu()
+            back_to_game = input("\nEnter 'BACK' for difficulty:\n").upper()
+            if back_to_game == "BACK":
+                game()
                 break
             else:
-                print(f"\n'{back_to_main}' is the wrong input.")
+                print(f"\n'{back_to_game}' is the wrong input.")
     elif choice == 2:
         # Difficulty
         game()
@@ -72,11 +72,11 @@ def restart():
 
     print("""1) Main Menu
 2) Quit\n""")
-    choice = pyip.inputInt("""Enter 1 for Main Menu
+    choice = pyip.inputInt("""Enter 1 for Difficulty
 or 2 to Quit: """, min=1, max=2)
 
     if choice == 1:
-        main_menu()
+        game()
     else:
         quit()
         system('cls')
@@ -105,8 +105,8 @@ def game():
             Or 4 to go back to main menu:\n""", min=1, max=4)
 
         if difficulty == 1:
-            board_size = 5
-            mines = 5
+            board_size = 2
+            mines = 1
         elif difficulty == 2:
             board_size = 8
             mines = 10
@@ -121,7 +121,7 @@ def game():
     player_map = player(board_size)
 
     # Displays given board
-    display_board(player_map)
+    display_board(minesweeper_map)
 
     while True:
         # Gets users choice
@@ -147,6 +147,8 @@ def game():
                 # Reveales cells
                 player_map[r][c] = minesweeper_map[r][c]
                 display_board(player_map)
+                print(coordinates)
+                print(used_coordinates)
 
                 # Counts how many cells revealed
                 revealed_cells = revealed_cells + 1
