@@ -109,14 +109,14 @@ def game():
             Or 4 to go back to main menu:\n""", min=1, max=4)
 
         if difficulty == 1:
-            board_size = 2
-            mines = 1
+            board_size = 5
+            mines = 3
         elif difficulty == 2:
-            board_size = 10
+            board_size = 8
             mines = 10
         elif difficulty == 3:
-            board_size = 15
-            mines = 35
+            board_size = 10
+            mines = 25
         else:
             main_menu()
         break
@@ -124,10 +124,11 @@ def game():
     minesweeper_map = minesweeper(board_size, mines)
     player_map = player(board_size)
 
-    display_board(minesweeper_map)
+    # Displays given board
+    display_board(player_map)
 
     while True:
-
+        # Gets users choice
         print("\nSelect position:")
         r = pyip.inputInt("Row:", min=0, max=board_size-1)
         c = pyip.inputInt("Column:", min=0, max=board_size-1)
@@ -139,15 +140,20 @@ def game():
             print('\nYou hit a mine!!')
             print('~~~~~~~GAME-OVER~~~~~~~\n')
             restart()
+
         # Uncovers players board corresponding to users input
+        # Checks for used coordinates
         else:
             if coordinates not in used_coordinates:
+                # Joins users input together to form coordinates
                 used_coordinates.append([r, c])
+
+                # Reveales cells
                 player_map[r][c] = minesweeper_map[r][c]
                 display_board(player_map)
+
+                # Counts how many cells revealed
                 revealed_cells = revealed_cells + 1
-                print(coordinates)
-                print(used_coordinates)
             else:
                 print('Coordinate already used, try again!')
 
