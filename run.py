@@ -131,12 +131,7 @@ def game():
         print("\nSelect position:")
         r = pyip.inputInt("Row:", min=0, max=board_size-1)
         c = pyip.inputInt("Column:", min=0, max=board_size-1)
-        used_coordinates.append([r, c])
         coordinates = [r, c]
-
-        for coordinates in used_coordinates:
-            print('2')
-
 
         # If mine hit game lost
         if minesweeper_map[r][c] == colored("X", "red", attrs=['bold']):
@@ -146,11 +141,15 @@ def game():
             restart()
         # Uncovers players board corresponding to users input
         else:
-            player_map[r][c] = minesweeper_map[r][c]
-            display_board(player_map)
-            revealed_cells = revealed_cells + 1
-            print(coordinates)
-            print(used_coordinates)
+            if coordinates not in used_coordinates:
+                used_coordinates.append([r, c])
+                player_map[r][c] = minesweeper_map[r][c]
+                display_board(player_map)
+                revealed_cells = revealed_cells + 1
+                print(coordinates)
+                print(used_coordinates)
+            else:
+                print('Coordinate already used, try again!')
 
             # Once all empty cells are revealed user wins
             if revealed_cells == board_size**2 - mines:
