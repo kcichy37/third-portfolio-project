@@ -120,7 +120,7 @@ def game():
         break
 
     minesweeper_map = minesweeper(board_size, mines)
-    player_map = player(minesweeper_map)
+    player_map = player(board_size)
 
     # Displays given board
     display_board(player_map)
