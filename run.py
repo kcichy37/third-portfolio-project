@@ -1,6 +1,7 @@
 """Game"""
 import sys
 import time
+import os
 from pyfiglet import Figlet
 import pyinputplus as pyip
 from termcolor import colored
@@ -78,6 +79,9 @@ or 2 to Quit: """, min=1, max=2)
         main_menu()
     else:
         quit()
+        
+        if quit():
+            os.system('CLS')
 
 
 def game():
@@ -95,8 +99,8 @@ def game():
 
         # Difficulty selection
         print("\n1) Easy, 5x5 grid with 5 mines")
-        print("2) Medium, 10x10 grid with 15 mines")
-        print("3) Hard, 15x15 grid with 35 mines")
+        print("2) Medium, 8x8 grid with 10 mines")
+        print("3) Hard, 10x10 grid with 25 mines")
         print("4) Back\n")
 
         difficulty = pyip.inputInt("""Please enter 1 for Easy, 2 for Medium and 3 for Hard
@@ -104,7 +108,7 @@ def game():
 
         if difficulty == 1:
             board_size = 5
-            mines = 3
+            mines = 5
         elif difficulty == 2:
             board_size = 8
             mines = 10
@@ -116,7 +120,7 @@ def game():
         break
 
     minesweeper_map = minesweeper(board_size, mines)
-    player_map = player(board_size)
+    player_map = player(minesweeper_map)
 
     # Displays given board
     display_board(player_map)
@@ -158,6 +162,6 @@ def game():
                 restart()
 
 
-print(figlet.renderText("MINESWEEPER"))
+print(figlet.renderText("WELCOME TO MINESWEEPER"))
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 main_menu()
