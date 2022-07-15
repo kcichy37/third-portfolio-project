@@ -1,7 +1,7 @@
 """Game"""
 import sys
 import time
-import pyfiglet
+from pyfiglet import figlet_format
 import pyinputplus as pyip
 from termcolor import colored
 from board import minesweeper, player, display_board
@@ -14,8 +14,7 @@ def main_menu():
     """
 
     # Main menu logo
-    result = pyfiglet.figlet_format("Welcome To Minesweeper", font="slant")
-    print(result)
+    print(figlet_format("Welcome To Minesweeper", font="slant"))
 
     # Rules or Difficulty selection choice
     print("""Please choose one of the options:\n
