@@ -105,8 +105,8 @@ def game():
             Or 4 to go back to main menu:\n""", min=1, max=4)
 
         if difficulty == 1:
-            board_size = 2
-            mines = 1
+            board_size = 5
+            mines = 4
         elif difficulty == 2:
             board_size = 8
             mines = 10
@@ -121,7 +121,7 @@ def game():
     player_map = player(board_size)
 
     # Displays given board
-    display_board(minesweeper_map)
+    display_board(player_map)
 
     while True:
         # Gets users choice
