@@ -158,6 +158,6 @@ def game():
                 restart()
 
 
-print(figlet.renderText("WELCOME TO MINESWEEPER"))
+print(figlet.renderText("MINESWEEPER"))
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 main_menu()
