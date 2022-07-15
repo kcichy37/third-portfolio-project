@@ -147,8 +147,6 @@ def game():
                 # Reveales cells
                 player_map[r][c] = minesweeper_map[r][c]
                 display_board(player_map)
-                print(coordinates)
-                print(used_coordinates)
 
                 # Counts how many cells revealed
                 revealed_cells = revealed_cells + 1
