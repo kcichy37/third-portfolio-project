@@ -158,6 +158,7 @@ def game():
                 restart()
 
 
-print(figlet.renderText("WELCOME TO MINESWEEPER"))
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-main_menu()
+if __name__ == "__main__":
+    print(figlet.renderText("WELCOME TO MINESWEEPER"))
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    main_menu()

@@ -79,6 +79,6 @@ def display_board(map):
     print(*range(max_row_len), sep=' | ')
     print('', "----"*max_row_len)
 
-    for idx, val in enumerate(map):
-        print('%2s' % idx, end='| ')
-        print(*val, sep=' | ')
+    for key, value in enumerate(map):
+        print('%2s' % key, end='| ')
+        print(*value, sep=' | ')
