@@ -1,7 +1,6 @@
 """Game"""
 import sys
 import time
-from os import system
 from pyfiglet import Figlet
 import pyinputplus as pyip
 from termcolor import colored
@@ -76,10 +75,9 @@ def restart():
 or 2 to Quit: """, min=1, max=2)
 
     if choice == 1:
-        game()
+        main_menu()
     else:
         quit()
-        system('cls')
 
 
 def game():
@@ -96,7 +94,7 @@ def game():
     while game_status:
 
         # Difficulty selection
-        print("\n1) Easy, 5x5 grid with 5 mines")
+        print("\n1) Easy, 5x5 grid with 4 mines")
         print("2) Medium, 8x8 grid with 10 mines")
         print("3) Hard, 10x10 grid with 25 mines")
         print("4) Back\n")
